@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: service-b
+
+---
+spring:
+  profiles: dev
+
+---
+spring:
+  profiles: test
+
+---
+spring:
+  profiles: pro

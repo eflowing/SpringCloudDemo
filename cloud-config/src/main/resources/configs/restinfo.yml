@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: restinfo
+
+---
+spring:
+  profiles: dev
+
+
+---
+spring:
+  profiles: test
+
+
+---
+spring:
+  profiles: pro

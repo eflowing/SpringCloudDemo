@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: redis-demo
+
+
+---
+spring:
+  profiles: dev
+
+---
+spring:
+  profiles: test
+
+---
+spring:
+  profiles: pro

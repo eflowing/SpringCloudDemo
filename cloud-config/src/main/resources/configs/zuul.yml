@@ -1,0 +1,136 @@
+spring:
+  application:
+    name: zuul
+  cloud:
+    bus:
+      enabled: true
+      trace:
+        enabled: true
+      refresh:
+        enabled: false
+
+#security:
+#  oauth2:
+#    authorization:
+#      check-token-access: http://auth-server:8088/oauth/check_token
+#    client:
+#      client-id: client
+#      client-secret: 123456
+#      grant-type: password
+#      access-token-uri: http://auth-server:8088/oauth/token
+#      user-authorization-uri: http://auth-server:8088/oauth/authorize
+#      authorized-grant-types: authorization_code,implicit,password,client_credentials,refresh_token
+#      scope: read
+#      registered-redirect-uri: http://www.baidu.com
+#    resource:
+#      id: resource1
+#      token-type: bearer
+#      #      user-info-uri:
+#      token-info-uri: http://auth-server:8088/oauth/check_token
+#      prefer-token-info: false
+##      jwt:
+##        key-uri: http://auth-server:8088/oauth/token_key
+
+
+logging:
+  path: .\logs\zuul
+
+zuul:
+#  sensitive-headers: Access-Control-Allow-Origin
+#  ignored-headers: Access-Control-Allow-Origin,H-APP-Id,Token,APPToken
+
+  ignored-services: "*"
+#  prefix: /app
+#  servlet-path:
+  routes:
+#    service-a: /a/**
+#    service-b: /b/**
+    auth-server:
+      serviceId: auth-server
+      path: /security/**
+    server-a:
+      serviceId: service-a
+      path: /a/**
+    server-b:
+      serviceId: service-b
+      path: /b/**
+    resource:
+      serviceId: resource-test
+      path: /r/**
+    security-test:
+      serviceId: security-test
+      path: /s/**
+
+
+
+
+
+---
+spring:
+  profiles: dev
+zuul:
+  host:
+    max-total-connections: 20
+    max-per-route-connections: 20
+    connect-timeout-millis: 60000
+    socket-timeout-millis: 60000
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+
+
+
+---
+spring:
+  profiles: test
+zuul:
+  host:
+    max-total-connections: 200
+    max-per-route-connections: 20
+    connect-timeout-millis: 60000
+    socket-timeout-millis: 60000
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+
+ribbon:
+  ReadTimeout: 30000
+  ConnectTimeout: 30000
+
+
+---
+spring:
+  profiles: pro
+zuul:
+  host:
+    max-total-connections: 200
+    max-per-route-connections: 20
+    connect-timeout-millis: 60000
+    socket-timeout-millis: 60000
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+
+ribbon:
+  ReadTimeout: 30000
+  ConnectTimeout: 30000
+

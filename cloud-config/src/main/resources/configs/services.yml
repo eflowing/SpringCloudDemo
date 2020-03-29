@@ -1,0 +1,75 @@
+server:
+  port: ${default.server.port:0}
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.int}
+feign:
+  hystrix:
+    enabled: true
+
+
+---
+spring:
+  profiles: dev
+
+zuul:
+  host:
+    connect-timeout-millis: 10000
+    socket-timeout-millis: 60000
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+
+ribbon:
+  ReadTimeout: 30000
+  ConnectTimeout: 30000
+
+
+---
+spring:
+  profiles: test
+
+zuul:
+  host:
+    connect-timeout-millis: 10000
+    socket-timeout-millis: 60000
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+
+ribbon:
+  ReadTimeout: 30000
+  ConnectTimeout: 30000
+
+
+---
+spring:
+  profiles: pro
+
+zuul:
+  host:
+    connect-timeout-millis: 10000
+    socket-timeout-millis: 60000
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+
+ribbon:
+  ReadTimeout: 30000
+  ConnectTimeout: 30000

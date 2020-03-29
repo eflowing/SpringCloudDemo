@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: service-a
+
+---
+spring:
+  profiles: dev
+data:
+  source: datasource-dev
+
+---
+spring:
+  profiles: test
+data:
+  source: datasource-test
+
+---
+spring:
+  profiles: pro
+data:
+  source: datasource-pro

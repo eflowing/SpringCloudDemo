@@ -1,0 +1,44 @@
+---
+spring:
+  profiles: dev
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    password:
+    pool:
+      max-active: 200
+      max-wait: -1
+      max-idle: 10
+      min-idle: 0
+    timeout: 1000
+
+---
+spring:
+  profiles: test
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    password:
+    pool:
+      max-active: 200
+      max-wait: -1
+      max-idle: 10
+      min-idle: 0
+    timeout: 1000
+
+---
+spring:
+  profiles: pro
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    password:
+    pool:
+      max-active: 200
+      max-wait: -1
+      max-idle: 10
+      min-idle: 0
+    timeout: 1000

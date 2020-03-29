@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: resource-test
+
+#security:
+#  oauth2:
+#    authorization:
+#      check-token-access: http://auth-server:8088/oauth/check_token
+#    client:
+#      client-id: client
+#      client-secret: 123456
+#      grant-type: password
+#      access-token-uri: http://auth-server:8088/oauth/token
+#      user-authorization-uri: http://auth-server:8088/oauth/authorize
+#      authorized-grant-types: authorization_code,implicit,password,client_credentials,refresh_token
+#      scope: read
+#      registered-redirect-uri: http://www.baidu.com
+#    resource:
+#      id: resource1
+#      token-type: bearer
+#      #      user-info-uri:
+#      token-info-uri: http://auth-server:8088/oauth/check_token
+#      prefer-token-info: false
+##      jwt:
+##        key-uri: http://auth-server:8088/oauth/token_key
+
+
+logging:
+  path: .\logs\resource
+
+---
+spring:
+  profiles: dev
+
+---
+spring:
+  profiles: test
+
+---
+spring:
+  profiles: pro

@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: config-test
+
+eflowing:
+  profile: dev
+  client:
+    id: c001
+    name: client
+  user:
+    id: u001
+    name: user
+    mobile: 13011111111
+
+---
+spring:
+  profiles: dev
+  check: ck-dev
+
+---
+spring:
+  profiles: test
+  check: ck-test
+
+---
+spring:
+  profiles: pro
+  check: ck-pro

@@ -1,0 +1,88 @@
+server:
+  port: 7003
+
+spring:
+  application:
+    name: cfgcenter
+  cloud:
+    config:
+      server:
+        git:
+          uri: github.com:eflow/configs.git
+          username:
+          password:
+          search-paths: checkpath
+        native:
+          search-locations:
+          - classpath:/configs
+        encrypt:
+          enabled: false
+    bus:
+      enabled: true
+      trace:
+        enabled: true
+      refresh:
+        enabled: true
+
+  profiles:
+    active: native
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    refresh:
+      enabled: true
+    bus-refresh:
+      enabled: true
+    shutdown:
+      enabled: false
+
+
+---
+#单注册实例，默认配置
+eureka:
+  client:
+    service-url:
+      defaultZone: http://reg-server:${reg_port:7001}/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
+---
+#双注册实例
+spring:
+  profiles: dreg
+eureka:
+  client:
+    service-url:
+      defaultZone: http://reg-master:${reg_master_port:7001}/eureka/,http://reg-slave:${reg_slave_port:7002}/eureka/
+
+
+---
+spring:
+  profiles: dev
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+---
+spring:
+  profiles: test
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+
+---
+spring:
+  profiles: pro
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest

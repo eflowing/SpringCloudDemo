@@ -1,0 +1,27 @@
+
+---
+spring:
+  profiles: dev
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+---
+spring:
+  profiles: test
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+---
+spring:
+  profiles: pro
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest

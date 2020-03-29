@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: auth-server
+
+logging:
+  path: .\logs
+
+---
+spring:
+  profiles: dev
+
+---
+spring:
+  profiles: test
+
+---
+spring:
+  profiles: pro

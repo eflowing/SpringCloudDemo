@@ -1,0 +1,34 @@
+spring:
+  cloud:
+    config:
+      name: services,auth-server
+      label: master
+      discovery:
+        service-id: cfgcenter
+        enabled: true
+      fail-fast: true
+
+
+#default:
+#  server:
+#    port: 8088
+
+
+---
+#单注册实例，默认配置
+eureka:
+  client:
+    service-url:
+      defaultZone: http://reg-server:${reg_port:7001}/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
+
+---
+#双注册实例
+spring:
+  profiles: dreg
+eureka:
+  client:
+    service-url:
+      defaultZone: http://reg-master:${reg_master_port:7001}/eureka/,http://reg-slave:${reg_slave_port:7002}/eureka/

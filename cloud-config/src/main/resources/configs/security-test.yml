@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: security-test
+
+logging:
+  path: .\logs
+
+---
+spring:
+  profiles: dev
+
+---
+spring:
+  profiles: test
+
+---
+spring:
+  profiles: pro
